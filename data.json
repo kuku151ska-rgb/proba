@@ -1,7 +1,9 @@
-{
-  "name": "loading",
-  "buy": 0,
-  "sell": 0,
-  "profit": 0,
-  "roi": 0
-}
+[
+  {
+    "name": "Test NFT",
+    "buy": 1.2,
+    "sell": 1.5,
+    "profit": 0.3,
+    "roi": 25
+  }
+]
