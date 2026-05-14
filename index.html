@@ -13,7 +13,7 @@
 <script>
 async function load() {
   try {
-    const res = await fetch("./data.json?t=" + Date.now());
+    const res = await fetch("https://kuku151ska-rgb.github.io/proba/data.json?t=" + Date.now());
     const d = await res.json();
 
     document.getElementById("out").innerHTML = 
