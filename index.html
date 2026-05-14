@@ -15,43 +15,54 @@
 
 async function loadData() {
 
-    const response = await fetch("./data.json?t=" + Date.now());
+    try {
 
-    const data = await response.json();
+        const response = await fetch("./data.json?t=" + Date.now());
 
-    let html = "";
-    if (data.length === 0) {
+        const data = await response.json();
 
-    document.getElementById("app").innerHTML = 
-        <h2>😴 No profitable NFTs found</h2>
-    ;
+        let html = "";
 
-    return;
-    }
-    
-    data.forEach(nft => {
+        if (data.length === 0) {
 
-        html += 
-        <div style="
-            background:#1e1e1e;
-            padding:15px;
-            margin-top:15px;
-            border-radius:12px;
-        ">
-            <h2>${nft.name}</h2>
+            document.getElementById("app").innerHTML = 
+                <h2>😴 No profitable NFTs found</h2>
+            ;
 
-            <p>📥 Buy: ${nft.offer} TON</p>
+            return;
+        }
 
-            <p>📤 Sell: ${nft.floor} TON</p>
+        data.forEach(nft => {
 
-            <p>💰 Profit: ${nft.profit} TON</p>
+            html += 
+            <div style="
+                background:#1e1e1e;
+                padding:15px;
+                margin-top:15px;
+                border-radius:12px;
+            ">
+                <h2>${nft.name}</h2>
 
-            <p>📊 ROI: ${nft.roi}%</p>
-        </div>
+                <p>📥 Buy: ${nft.offer} TON</p>
+
+                <p>📤 Sell: ${nft.floor} TON</p>
+
+                <p>💰 Profit: ${nft.profit} TON</p>
+
+                <p>📊 ROI: ${nft.roi}%</p>
+            </div>
+            ;
+        });
+
+        document.getElementById("app").innerHTML = html;
+
+    } catch(e) {
+
+        document.getElementById("app").innerHTML = 
+            <h2>❌ ERROR LOADING DATA</h2>
+            <p>${e}</p>
         ;
-    });
-
-    document.getElementById("app").innerHTML = html;
+    }
 }
 
 loadData();
