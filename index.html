@@ -2,34 +2,49 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>WebApp</title>
+  <title>NFT Dashboard</title>
 </head>
 <body>
 
-<h2>📊 NFT Dashboard</h2>
+<h1>📊 NFT Dashboard</h1>
 
-<div id="out">Loading...</div>
+<div id="out">
+Loading...
+</div>
 
 <script>
-async function load() {
-  try {
-    const res = await fetch("https://kuku151ska-rgb.github.io/proba/data.json?t=" + Date.now());
-    const d = await res.json();
 
-    document.getElementById("out").innerHTML = 
-      <p>🎁 ${d.name}</p>
-      <p>📥 Buy: ${d.buy}</p>
-      <p>📤 Sell: ${d.sell}</p>
-      <p>💰 Profit: ${d.profit}</p>
-      <p>📊 ROI: ${d.roi}%</p>
-    ;
-  } catch (e) {
-    document.getElementById("out").innerHTML = "❌ ERROR LOADING DATA";
-  }
+async function loadData() {
+
+    try {
+
+        const res = await fetch(
+          "https://kuku151ska-rgb.github.io/proba/data.json?t=" + Date.now()
+        )
+
+        const data = await res.json()
+
+        document.getElementById("out").innerHTML = 
+            <p>🎁 ${data.name}</p>
+            <p>📥 Buy: ${data.buy}</p>
+            <p>📤 Sell: ${data.sell}</p>
+            <p>💰 Profit: ${data.profit}</p>
+            <p>📊 ROI: ${data.roi}%</p>
+        
+
+    } catch(e) {
+
+        document.getElementById("out").innerHTML =
+          "❌ ERROR LOADING DATA"
+
+    }
+
 }
 
-load();
-setInterval(load, 5000);
+loadData()
+
+setInterval(loadData, 5000)
+
 </script>
 
 </body>
