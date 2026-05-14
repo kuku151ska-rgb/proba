@@ -1,49 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>NFT Dashboard</title>
+<meta charset="UTF-8">
+<title>NFT Dashboard</title>
 </head>
-<body>
+
+<body style="background:#121212;color:white;font-family:Arial;padding:20px;">
 
 <h1>📊 NFT Dashboard</h1>
 
-<div id="out">
-Loading...
-</div>
+<div id="app">Loading...</div>
 
 <script>
 
 async function loadData() {
 
-    try {
+    const response = await fetch("./data.json?t=" + Date.now());
 
-        const res = await fetch(
-          "https://kuku151ska-rgb.github.io/proba/data.json?t=" + Date.now()
-        )
+    const data = await response.json();
 
-        const data = await res.json()
+    let html = "";
 
-        document.getElementById("out").innerHTML = 
-            <p>🎁 ${data.name}</p>
-            <p>📥 Buy: ${data.buy}</p>
-            <p>📤 Sell: ${data.sell}</p>
-            <p>💰 Profit: ${data.profit}</p>
-            <p>📊 ROI: ${data.roi}%</p>
-        
+    data.forEach(nft => {
 
-    } catch(e) {
+        html += 
+        <div style="
+            background:#1e1e1e;
+            padding:15px;
+            margin-top:15px;
+            border-radius:12px;
+        ">
+            <h2>${nft.name}</h2>
 
-        document.getElementById("out").innerHTML =
-          "❌ ERROR LOADING DATA"
+            <p>📥 Buy: ${nft.offer} TON</p>
 
-    }
+            <p>📤 Sell: ${nft.floor} TON</p>
 
+            <p>💰 Profit: ${nft.profit} TON</p>
+
+            <p>📊 ROI: ${nft.roi}%</p>
+        </div>
+        ;
+    });
+
+    document.getElementById("app").innerHTML = html;
 }
 
-loadData()
+loadData();
 
-setInterval(loadData, 5000)
+setInterval(loadData, 5000);
 
 </script>
 
