@@ -2,70 +2,34 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>NFT Dashboard</title>
-
-  <style>
-    body {
-      font-family: Arial;
-      background: #0f0f0f;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .card {
-      background: #1c1c1c;
-      padding: 15px;
-      margin: 10px;
-      border-radius: 10px;
-    }
-
-    .profit {
-      font-size: 30px;
-      color: lime;
-      font-weight: bold;
-    }
-  </style>
+  <title>WebApp</title>
 </head>
-
 <body>
 
-<h1>🔥 ARB DASHBOARD</h1>
+<h2>📊 NFT Dashboard</h2>
 
-<div class="card">
-  <h2 id="name">Loading...</h2>
-</div>
-
-<div class="card">
-  Profit:
-  <div class="profit" id="profit">...</div>
-</div>
-
-<div class="card">
-  Offer: <span id="offer"></span><br>
-  Floor: <span id="floor"></span><br>
-  ROI: <span id="roi"></span>%
-</div>
+<div id="out">Loading...</div>
 
 <script>
-async function loadData() {
+async function load() {
   try {
-    const res = await fetch("http://YOUR_SERVER_IP:5000/data");
-    const data = await res.json();
+    const res = await fetch("./data.json?t=" + Date.now());
+    const d = await res.json();
 
-    document.getElementById("name").innerText = data.name;
-    document.getElementById("profit").innerText = data.profit;
-    document.getElementById("offer").innerText = data.best_offer;
-    document.getElementById("floor").innerText = data.floor;
-    document.getElementById("roi").innerText = data.roi;
-
+    document.getElementById("out").innerHTML = 
+      <p>🎁 ${d.name}</p>
+      <p>📥 Buy: ${d.buy}</p>
+      <p>📤 Sell: ${d.sell}</p>
+      <p>💰 Profit: ${d.profit}</p>
+      <p>📊 ROI: ${d.roi}%</p>
+    ;
   } catch (e) {
-    document.body.innerHTML = "❌ ERROR LOADING DATA";
+    document.getElementById("out").innerHTML = "❌ ERROR LOADING DATA";
   }
 }
 
-loadData();
-setInterval(loadData, 5000);
+load();
+setInterval(load, 5000);
 </script>
 
 </body>
