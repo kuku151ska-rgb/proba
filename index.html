@@ -20,7 +20,15 @@ async function loadData() {
     const data = await response.json();
 
     let html = "";
+    if (data.length === 0) {
 
+    document.getElementById("app").innerHTML = 
+        <h2>😴 No profitable NFTs found</h2>
+    ;
+
+    return;
+    }
+    
     data.forEach(nft => {
 
         html += 
