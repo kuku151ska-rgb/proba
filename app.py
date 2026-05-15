@@ -17,8 +17,14 @@ OFFERS_API = "https://portal-market.com/api/collection-offers/{collection_id}/al
 HEADERS = {
     "accept": "application/json, text/plain, */*",
     "accept-language": "uk-UA,uk;q=0.9,en-US;q=0.8,en;q=0.7",
-    "referer": "https://portal-market.com/",
+
+    "authorization": "tma query_id=AAHLyjg0AwAAAMvKODTmT1fK&user=%7B%22id%22%3A7318588107%2C%22first_name%22%3A%22%D0%A2%D1%96%D0%B3%D0%B5%D1%80%E2%96%AA%EF%B8%8F%F0%9F%90%BE%F0%9F%90%8D%22%2C%22last_name%22%3A%22%22%2C%22language_code%22%3A%22uk%22%2C%22allows_write_to_pm%22%3Atrue%2C%22photo_url%22%3A%22https%3A%5C%2F%5C%2Ft.me%5C%2Fi%5C%2Fuserpic%5C%2F320%5C%2FWUTJgWh0IosbFoZ-P1KF_3SUYqoHWsWpNGDyW4KNTvxnX7OzRAINrc7tvBsEzKto.svg%22%7D&auth_date=1778761182&signature=xawUfPxf8QedI4bh7PY5M_bbQ1xcqVXv7vbsYrQrWFZK8I9_90Y3OZaltlL_DRquRHs97qMw0KySySKQkzNQBg&hash=95927c15db9e989d7483bc5787c56fbf518bb3da72163370c659d7d7d2c42381",
+
+    "cookie": "_ym_uid=1769759796763216628; _ym_d=1769759796; cf_clearance=PVVjFU7jhAvNhUSCppKNQXLYEH7F4Y2PPmyh5zsx8qI-1778761186-1.2.1.1-QC3S.g52anLaZEQLbbeXF7vpLGm1Von8DJRCX1pP9MJ7QCc.4Pfkmc4tLMyjSQdwbu_g8trZ4rXicfIWH7SHFi63eOYRbk7ngikIKKPwESjh4JT3yF.dDd2QcJdZgyZ1RO_huxXjMqTtYhJ87EMYFQpXivOXk3DzltOm4zXFn986d2WOEukgM49d5xdsiOROeeJYOSr4AVrRpAj_7Tw5zbuQYDjVVkowcYQqGVoU8OTnng3h5MiSf9s3aE05H7dEnPuU6at_yWVcMBkJ0lRXi_S.zv677N0eGmsSseVwCrRb5IMjCK5COr1XpP18gEq7CRzk29Jrjvnd9Xo7lMGoUQ"
+    
+    "referer": "https://portal-market.com/quick-sale-offers",
     "origin": "https://portal-market.com",
+
     "user-agent": "Mozilla/5.0"
 }
 
