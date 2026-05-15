@@ -82,7 +82,9 @@ def data():
 
                     if amount > 0:
                         prices.append(amount)
-
+                        
+                print("OFFERS:", prices)
+                
                 if not prices:
                     continue
 
