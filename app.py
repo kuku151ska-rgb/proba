@@ -65,9 +65,11 @@ def data():
                     timeout=20
                 )
 
-                offers = offers_r.json().get(
-                    "offers",
-                    []
+                data = offers_r.json()
+                
+                print(data)
+                
+                offers = data.get("offers") or data.get("data") or []
                 )
 
                 prices = []
