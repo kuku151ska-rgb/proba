@@ -15,7 +15,6 @@ OFFERS_API = "https://portal-market.com/api/collection-offers/{collection_id}/al
 # =====================================
 
 HEADERS = {
-HEADERS = {
     "accept": "application/json, text/plain, */*",
     "accept-language": "uk-UA,uk;q=0.9,en-US;q=0.8,en;q=0.7",
 
