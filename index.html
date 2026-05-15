@@ -6,9 +6,14 @@
 <title>NFT Dashboard</title>
 </head>
 
-<body style="background:#121212;color:white;font-family:Arial;padding:20px;">
+<body style="
+background:#121212;
+color:white;
+font-family:Arial;
+padding:20px;
+">
 
-<h1>📊 NFT Dashboard</h1>
+<h1>📊 NFT Arbitrage</h1>
 
 <div id="app">Loading...</div>
 
@@ -16,19 +21,31 @@
 
 async function loadData() {
 
-    const response = await fetch("./data.json?t=" + Date.now());
+    const response = await fetch("/data");
 
     const data = await response.json();
 
     let html = "";
 
-    if (data.length === 0) {
+    if (data.error) {
 
         html = `
-        <h2>😴 No profitable NFTs found</h2>
+        <h2>❌ ${data.error}</h2>
         `;
 
         document.getElementById("app").innerHTML = html;
+
+        return;
+    }
+
+    if (data.length === 0) {
+
+        html = `
+        <h2>😴 No NFTs found</h2>
+        `;
+
+        document.getElementById("app").innerHTML = html;
+
         return;
     }
 
@@ -44,9 +61,9 @@ async function loadData() {
 
             <h2>${nft.name}</h2>
 
-            <p>📥 Buy: ${nft.offer} TON</p>
+            <p>📥 Offer: ${nft.offer} TON</p>
 
-            <p>📤 Sell: ${nft.floor} TON</p>
+            <p>📤 Floor: ${nft.floor} TON</p>
 
             <p>💰 Profit: ${nft.profit} TON</p>
 
@@ -61,7 +78,7 @@ async function loadData() {
 
 loadData();
 
-setInterval(loadData, 5000);
+setInterval(loadData, 10000);
 
 </script>
 
